@@ -1,3 +1,4 @@
+import "iconify-icon"
 import './assets/index.css'
 
 import { createPinia } from 'pinia'
