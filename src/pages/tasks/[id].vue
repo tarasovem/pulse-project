@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
+const route = useRoute<'/tasks/[id]'>()
 </script>
 
 <template>
   <div>
     <h1>Project {{ route.params?.id }}</h1>
-    <RouterLink to="/">go to home</RouterLink>
   </div>
 </template>
