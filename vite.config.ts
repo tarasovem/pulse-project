@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
-
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +16,20 @@ export default defineConfig({
        plugins: [tailwind(), autoprefixer()],
     }
   },
-  plugins: [VueRouter(), vue({
+  plugins: [VueRouter(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.vue\.[tj]sx?\?vue/, // .vue (vue-loader with experimentalInlineMatchResource enabled)
+        /\.md$/, // .md
+      ],
+      imports : ['vue', 'vue-router'],
+      dts: true,
+      viteOptimizeDeps: true,
+    }),
+    vue({
     template: {
       compilerOptions: {
         isCustomElement: (element) => element.startsWith("iconify-icon"),
