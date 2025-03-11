@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DataTable from '@/components/ui/data-table/DataTable.vue'
 import { supabase } from '@/lib/supabaseClient'
 import type { ColumnDef } from '@tanstack/vue-table'
 import { RouterLink } from 'vue-router'
